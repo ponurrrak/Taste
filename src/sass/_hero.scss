@@ -1,0 +1,47 @@
+.hero {
+  height: 1290px;
+  background-color: $color-main;
+  background-image: url("../images/background.jpg");
+  @include background-image();
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-image: linear-gradient(to top, $color-dark, transparent 75%);
+  }
+
+  .hero-inner {
+    position: absolute;
+    @include center();
+    text-align: center;
+    z-index: 2;
+    text-transform: uppercase;
+
+    h1 {
+      font-weight: $font-extrabold;
+      font-size: 200px;
+      line-height: 1.2;
+      letter-spacing: 120px;
+      text-indent: 110px;
+    }
+
+    h2 {
+      font-weight: $font-bold;
+      font-size: 36px;
+      letter-spacing: 11px;
+
+      span {
+        display: block;
+        padding-bottom: 14px;
+      }
+    }
+
+  }
+
+}

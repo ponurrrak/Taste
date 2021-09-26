@@ -1,3 +1,5 @@
+/* Variables */
+
 $color-dark: #131313;
 $color-light: #fff;
 $color-main: #cf383e;
@@ -13,3 +15,18 @@ $font-extrabold: 900;
 $transition: all 1s;
 
 $base-size: 14px;
+
+
+/* Mixins */
+
+@mixin background-image(){
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+@mixin center(){
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

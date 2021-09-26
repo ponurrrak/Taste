@@ -13,7 +13,25 @@ body {
 }
 
 .container {
-  max-width: 700px;
+  max-width: 740px;
   margin: 0 auto;
   padding: 0 20px;
+}
+
+section {
+  margin-top: 75px;
+}
+
+.section-title {
+  font-size: 58px;
+  font-weight: $font-semibold;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 13px;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
 }

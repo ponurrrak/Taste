@@ -1,0 +1,43 @@
+#search form {
+  height: 65px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+
+  input {
+    display: inline-block;
+    height: 100%;
+    width: 355px;
+    border: none;
+    border-radius: 10px;
+    padding: 0 10px;
+    margin-left: 22px;
+    margin-right: 22px;
+    font-size: 40px;
+  }
+
+  label {
+    font-size: 28px;
+    font-weight: $font-semibold;
+    letter-spacing: 7px;
+    vertical-align: super;
+  }
+
+  button {
+    display: inline-block;
+    height: 100%;
+    width: 140px;
+    vertical-align: super;
+    background-color: $color-main;
+    border: none;
+    border-radius: 10px;
+    padding: 0;
+    font-size: 22px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: $color-light;
+    cursor: pointer;
+
+  }
+
+}
