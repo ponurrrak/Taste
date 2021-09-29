@@ -37,7 +37,7 @@
     </nav>
 
     <main id="pages">
-      <section id="home">
+      <section id="home" class="page">
         <section>
           <div class="container">
             <ul id="songs-list-wrapper-home"></ul>
@@ -61,12 +61,12 @@
           </div>
         </section>
       </section>
-      <section id="search">
+      <section id="search" class="page">
         <div class="container">
           <h2 class="section-title">Search</h2>
           <form>
             <label for="song-name">Name</label>
-            <input type="text" name="song-name" id="song-name">
+            <input type="text" name="song-name" autocomplete="off" autofocus id="song-name">
             <button type="submit">Search</button>
           </form>
           <div>
@@ -75,7 +75,7 @@
           </div>
         </div>
       </section>
-      <section id="discover">
+      <section id="discover" class="page">
         <div class="container">
           <h2 class="section-title">Discover</h2>
           <h3 class="section-subtitle">Give it a try!</h3>
@@ -95,20 +95,34 @@
           <span class="song-author">{{author}} - </span>
           <span class="song-title">{{title}}</span>
         </h4>
-        <div class="audio-player">
+        <div class="audio-player-{{id}}">
           <audio>
-            <source src="{{filename}}" type="audio/mpeg">
+            <source src="songs/{{filename}}" type="audio/mpeg">
           </audio>
         </div>
         <div class="song-info">
-          <p class="song-category">Categories: {{categories.join(', ')}}</p>
+          <p class="song-category">
+            Categories: {{#each categories}}
+              <span>{{this}}</span>
+              {{#unless @last}}
+                <span>, </span>
+              {{/unless}}
+            {{/each}}
+          </p>
           <p class="song-rank">#{{ranking}} in the ranking</p>
         </div>
       </li>
     </script>
 
     <script id="template-search-results-number" type="text/x-handlebars-template">
-      <h3 class="search-results-number">We have found {{searchResultsNumber}} songs...</h3>
+      <h3 class="search-results-number">
+        We have found {{searchResultsNumber}}
+        {{#if (isOnlyOneSongFound searchResultsNumber)}}
+          <span> song...</span>
+        {{else}}
+          <span> songs...</span>
+        {{/if}}
+      </h3>
     </script>
 
 

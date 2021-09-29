@@ -35,3 +35,12 @@ h2,
 h3 {
   margin: 0;
 }
+
+.page {
+  display: none;
+
+  &.active {
+    display: block;
+  }
+
+}

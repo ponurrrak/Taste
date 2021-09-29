@@ -10,11 +10,16 @@ const utils = {
       }
     }
   },
-  createDOMFromHTML: function(htmlString) {
+  createDOMBasedOnTemplate: function(dataObject, templateFunction) {
+    const generatedHTML = templateFunction(dataObject);
     let div = document.createElement('div');
-    div.innerHTML = htmlString.trim();
+    div.innerHTML = generatedHTML.trim();
     return div.firstChild;
   },
 };
+
+Handlebars.registerHelper('isOnlyOneSongFound', function(value) {
+  return value === 1;
+});
 
 export default utils;
