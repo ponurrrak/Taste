@@ -25,8 +25,8 @@ class Search extends Page{
       const dataPromisesAll = thisSearch.getData();
       const dataPromiseMerged = thisSearch.removeDuplicates(dataPromisesAll);
       const dataPromiseSorted = thisSearch.sortData(dataPromiseMerged);
-      thisSearch.renderResultsNumber(dataPromiseSorted);
       thisSearch.renderData(dataPromiseSorted);
+      thisSearch.renderResultsNumber(dataPromiseSorted);
     });
   }
   getData(){
@@ -75,7 +75,6 @@ class Search extends Page{
   renderResultsNumber(dataPromise){
     const thisSearch = this;
     dataPromise.then(function(uniqueSongs){
-      thisSearch.dom.searchResultsNumber.innerHTML = '';
       const searchResultsNumber = {
         searchResultsNumber: uniqueSongs.length
       };
@@ -83,6 +82,13 @@ class Search extends Page{
       thisSearch.dom.searchResultsNumber.appendChild(generatedDOMElement);
 
     });
+  }
+  removeRenderedData(){
+    const thisSearch = this;
+    super.removeRenderedData();
+    thisSearch.dom.searchResultsNumber.innerHTML = '';
+    thisSearch.dom.input.value = '';
+    thisSearch.dom.input.focus();
   }
 }
 

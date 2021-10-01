@@ -25,8 +25,7 @@ class Page {
   renderData(dataPromise){
     const thisPage = this;
     dataPromise.then(function(parsedResponse){
-      thisPage.dom.songsListWrapper.innerHTML = '';
-      thisPage.audioPlayers = [];
+      thisPage.removeRenderedData();
       for(const songData of parsedResponse){
         const generatedDOMElement = utils.createDOMBasedOnTemplate(songData, templates.songsList);
         thisPage.dom.songsListWrapper.appendChild(generatedDOMElement);
@@ -35,6 +34,11 @@ class Page {
         thisPage.audioPlayers.push(currentAudioPlayer);
       }
     });
+  }
+  removeRenderedData(){
+    const thisPage = this;
+    thisPage.dom.songsListWrapper.innerHTML = '';
+    thisPage.audioPlayers = [];
   }
 }
 

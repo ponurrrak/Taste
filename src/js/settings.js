@@ -9,7 +9,8 @@ export const select = {
     songsListSearch: '#songs-list-wrapper-search',
     songsListDiscover: '#songs-list-wrapper-discover',
     searchResultsNumber: '#search-results-number-wrapper',
-    discoverPage: '#discover'
+    discoverPage: '#discover',
+    searchPage: '#search'
   },
   all: {
     navPanel: '.main-nav',

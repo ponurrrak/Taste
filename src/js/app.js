@@ -30,6 +30,9 @@ const app = {
         }
         const pageToActivateID = clickedNavLink.getAttribute('href').replace('#', '');
         thisApp.activatePage(pageToActivateID);
+        if(pageToActivateID === select.containerOf.searchPage.replace('#', '')) {
+          thisApp.pages.search.removeRenderedData();
+        }
       });
     }
   },
