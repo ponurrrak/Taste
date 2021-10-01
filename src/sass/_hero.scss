@@ -19,7 +19,6 @@
   .hero-inner {
     position: absolute;
     @include center();
-    text-align: center;
     z-index: 2;
     text-transform: uppercase;
 
@@ -35,6 +34,7 @@
       font-weight: $font-bold;
       font-size: 36px;
       letter-spacing: 11px;
+      line-height: 1.7;
 
       span {
         display: block;

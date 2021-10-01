@@ -1,3 +1,14 @@
+.subscribe-wrapper h1,
+.subscribe-wrapper h2 {
+  font-size: 100px;
+  letter-spacing: 20px;
+}
+
+.album-info,
+.join-now-link {
+  font-size: 38px;
+}
+
 .subscribe-wrapper {
   height: 1020px;
   margin-top: 145px;
@@ -11,11 +22,9 @@
     left: 50%;
     top: 0;
     transform: translate(-50%, -50%);
-    font-size: 100px;
     font-weight: $font-semibold;
     text-transform: uppercase;
     white-space: nowrap;
-    letter-spacing: 20px;
 
     strong {
       font-weight: $font-extrabold;
@@ -36,9 +45,7 @@
     position: absolute;
     right: 0;
     bottom: 0;
-    font-size: 38px;
     letter-spacing: 9px;
-    text-align: right;
     line-height: 1.4;
 
 
@@ -47,10 +54,12 @@
       font-weight: $font-bold;
       color: $color-grey;
       text-transform: uppercase;
+      text-align: right;
     }
 
     p {
       margin: 0;
+      text-align: right;
     }
 
   }
@@ -66,10 +75,8 @@
     border-radius: 5px;
     text-align: center;
     line-height: 132px;
-    text-decoration: none;
     color: $color-light;
     text-transform: uppercase;
-    font-size: 38px;
     font-weight: $font-bold;
     letter-spacing: 10px;
   }
@@ -97,10 +104,7 @@
 
   h2 {
     position: absolute;
-    font-size: 100px;
     font-weight: $font-extrabold;
-    line-height: 1;
-    letter-spacing: 20px;
 
     &.artist-first-name {
       top: 0;

@@ -1,21 +1,13 @@
 .songs-list {
-  margin: 0;
-
   padding-left: 0;
-  list-style: none;
 
   li {
     max-width: 560px;
     margin: 0 auto 65px;
-    letter-spacing: 2px;
   }
 
   h4 {
-    text-align: center;
     padding-bottom: 60px;
-    font-size: 30px;
-    font-weight: $font-semibold;
-    line-height: 1;
 
     .song-author {
       text-transform: uppercase;
@@ -41,8 +33,8 @@
     margin-top: 25px;
 
     p {
-      font-size: 20px;
       margin: 0;
+      line-height: 1.7;
 
       &.song-category {
         padding-left: 15px;

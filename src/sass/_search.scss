@@ -1,7 +1,11 @@
+#search form,
+.search-results-number {
+  margin-bottom: 88px;
+}
+
 #search form {
   height: 65px;
   margin-top: 48px;
-  margin-bottom: 88px;
   text-align: center;
 
   input {
@@ -40,13 +44,4 @@
 
   }
 
-}
-
-.search-results-number {
-  font-size: 30px;
-  font-weight: $font-semibold;
-  letter-spacing: 6px;
-  text-align: center;
-  line-height: 1;
-  margin-bottom: 88px;
 }
