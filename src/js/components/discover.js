@@ -13,15 +13,13 @@ class Discover extends Page{
     const thisDiscover = this;
     thisDiscover.lastSongPromise = thisDiscover.getData(settings.db.queries.lastSong);
   }
-  getRandomSong(){
+  async getRandomSong(){
     const thisDiscover = this;
-    const dataPromise = thisDiscover.lastSongPromise.then(function(lastSongData){
-      const lastSongID =  lastSongData[0].id;
-      const randomID = Math.floor(Math.random() * lastSongID) + 1;
-      const query = settings.db.queries.withSongID + randomID;
-      return thisDiscover.getData(query);
-    });
-    return dataPromise;
+    const lastSongData = await thisDiscover.lastSongPromise;
+    const lastSongID =  lastSongData[0].id;
+    const randomID = Math.floor(Math.random() * lastSongID) + 1;
+    const query = settings.db.queries.withSongID + randomID;
+    return thisDiscover.getData(query);
   }
 }
 

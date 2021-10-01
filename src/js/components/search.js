@@ -38,50 +38,48 @@ class Search extends Page{
     const promises = Promise.all([promiseTitles, promiseAuthors]);
     return promises;
   }
-  removeDuplicates(dataPromisesAll){
-    const dataPromiseMerged = dataPromisesAll.then(function(arrayOfResponses){
-      const uniqueIDs = [];
-      const uniqueSongs = arrayOfResponses[0];
-      for(const song of uniqueSongs){
+  async removeDuplicates(dataPromisesAll){
+    const arrayOfResponses = await dataPromisesAll;
+    const uniqueIDs = [];
+    const uniqueSongs = arrayOfResponses[0];
+    for(const song of uniqueSongs){
+      uniqueIDs.push(song.id);
+    }
+    for(const song of arrayOfResponses[1]){
+      if(!uniqueIDs.includes(song.id)){
         uniqueIDs.push(song.id);
+        uniqueSongs.push(song);
       }
-      for(const song of arrayOfResponses[1]){
-        if(!uniqueIDs.includes(song.id)){
-          uniqueIDs.push(song.id);
-          uniqueSongs.push(song);
-        }
+    }
+    return uniqueSongs;
+  }
+  async sortData(dataPromise){
+    const uniqueSongs = await dataPromise;
+    uniqueSongs.sort(function(firstElem, secondElem){
+      if(firstElem.ranking === secondElem.ranking || (isNaN(firstElem.ranking) && isNaN(secondElem.ranking))){
+        return secondElem.id - firstElem.id;
+      } else if(isNaN(firstElem.ranking)){
+        return 1;
+      } else if(isNaN(secondElem.ranking)){
+        return -1;
+      } else {
+        return secondElem.ranking - firstElem.ranking;
       }
-      return uniqueSongs;
     });
-    return dataPromiseMerged;
+    return uniqueSongs;
   }
-  sortData(dataPromise){
-    dataPromise = dataPromise.then(function(uniqueSongs){
-      uniqueSongs.sort(function(firstElem, secondElem){
-        if(firstElem.ranking === secondElem.ranking || (isNaN(firstElem.ranking) && isNaN(secondElem.ranking))){
-          return secondElem.id - firstElem.id;
-        } else if(isNaN(firstElem.ranking)){
-          return 1;
-        } else if(isNaN(secondElem.ranking)){
-          return -1;
-        } else {
-          return secondElem.ranking - firstElem.ranking;
-        }
-      });
-      return uniqueSongs;
-    });
-    return dataPromise;
-  }
-  renderResultsNumber(dataPromise){
+  async renderResultsNumber(dataPromise){
     const thisSearch = this;
-    dataPromise.then(function(uniqueSongs){
+    try {
+      const uniqueSongs = await dataPromise;
       const searchResultsNumber = {
         searchResultsNumber: uniqueSongs.length
       };
       const generatedDOMElement = utils.createDOMBasedOnTemplate(searchResultsNumber, templates.searchResultsNumber);
       thisSearch.dom.searchResultsNumber.appendChild(generatedDOMElement);
-
-    });
+    } catch(err) {
+      alert(settings.errorMessage + err.toString());
+    }
   }
   removeRenderedData(){
     const thisSearch = this;

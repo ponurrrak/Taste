@@ -14,17 +14,15 @@ class Page {
       songsListWrapper: document.querySelector(thisPage.songsListWrapperSelector),
     };
   }
-  getData(query){
+  async getData(query){
     const url = settings.db.url + '/' + settings.db.endpoint + '?' + query;
-    const dataPromise = fetch(url)
-      .then(function(rawResponse){
-        return rawResponse.json();
-      });
-    return dataPromise;
+    const rawResponse = await fetch(url);
+    return rawResponse.json();
   }
-  renderData(dataPromise){
+  async renderData(dataPromise){
     const thisPage = this;
-    dataPromise.then(function(parsedResponse){
+    try {
+      const parsedResponse = await dataPromise;
       thisPage.removeRenderedData();
       for(const songData of parsedResponse){
         const generatedDOMElement = utils.createDOMBasedOnTemplate(songData, templates.songsList);
@@ -33,7 +31,9 @@ class Page {
         const currentAudioPlayer = new GreenAudioPlayer(currentAudioPlayerSelector, {stopOthersOnPlay: true});
         thisPage.audioPlayers.push(currentAudioPlayer);
       }
-    });
+    } catch(err) {
+      alert(settings.errorMessage + err.toString());
+    }
   }
   removeRenderedData(){
     const thisPage = this;

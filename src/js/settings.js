@@ -43,7 +43,7 @@ export const settings = {
     }
 
   },
-
+  errorMessage: 'Sorry, but an unexpected error occured. Try again later. Error info: '
 };
 
 export const templates = {
