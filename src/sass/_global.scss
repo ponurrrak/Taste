@@ -12,6 +12,16 @@ body {
   color: $color-light;
 }
 
+#not-supported-devices-info {
+  display: none;
+  font-weight: $font-semibold;
+  text-align: center;
+  font-size: $base-size;
+  line-height: 1.7;
+  position: absolute;
+  @include center();
+}
+
 .container {
   max-width: 740px;
   margin: 0 auto;

@@ -12,122 +12,127 @@
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
-    <header class="hero">
-      <div class="hero-inner">
-        <h1>Taste</h1>
-        <h2>
-          <span>Engage</span>
-          <span>in</span>
-          <span>Art</span>
-        </h2>
-      </div>
-    </header>
-    <nav class="main-nav container">
-      <ul>
-        <li>
-          <a href="#home">Home</a>
-        </li>
-        <li>
-          <a href="#search">Search</a>
-        </li>
-        <li>
-          <a href="#discover">Discover</a>
-        </li>
-      </ul>
-    </nav>
+    <div id="body-inner">
+      <header class="hero">
+        <div class="hero-inner">
+          <h1>Taste</h1>
+          <h2>
+            <span>Engage</span>
+            <span>in</span>
+            <span>Art</span>
+          </h2>
+        </div>
+      </header>
+      <nav class="main-nav container">
+        <ul>
+          <li>
+            <a href="#home">Home</a>
+          </li>
+          <li>
+            <a href="#search">Search</a>
+          </li>
+          <li>
+            <a href="#discover">Discover</a>
+          </li>
+        </ul>
+      </nav>
 
-    <main id="pages">
-      <section id="home" class="page">
-        <section>
-          <div class="container">
-            <ul id="songs-list-wrapper-home" class="songs-list"></ul>
-          </div>
-        </section>
-        <section class="subscribe-wrapper">
-          <h1>Subscribe <strong>now</strong></h1>
-          <div class="subscribe-wrapper-inner">
-            <div class="artist-card-wrapper">
-              <div class="artist-name">
-                <h2 class="artist-first-name">Dean</h2>
-                <h2 class="artist-surname">Hen<span>son</span></h2>
+      <main id="pages">
+        <section id="home" class="page">
+          <section>
+            <div class="container">
+              <ul id="songs-list-wrapper-home" class="songs-list"></ul>
+            </div>
+          </section>
+          <section class="subscribe-wrapper">
+            <h1>Subscribe <strong>now</strong></h1>
+            <div class="subscribe-wrapper-inner">
+              <div class="artist-card-wrapper">
+                <div class="artist-name">
+                  <h2 class="artist-first-name">Dean</h2>
+                  <h2 class="artist-surname">Hen<span>son</span></h2>
+                </div>
+                <img src="images/artist.jpg" alt="artist">
               </div>
-              <img src="images/artist.jpg" alt="artist">
+              <a href="join-now" class="join-now-link">Join now</a>
+              <div class="album-info">
+                <h3>New album</h3>
+                <p>Available only for subscribers</p>
+              </div>
             </div>
-            <a href="join-now" class="join-now-link">Join now</a>
-            <div class="album-info">
-              <h3>New album</h3>
-              <p>Available only for subscribers</p>
+          </section>
+        </section>
+        <section id="search" class="page">
+          <div class="container">
+            <h2 class="section-title">Search</h2>
+            <form>
+              <label for="song-name">Name</label>
+              <input type="text" name="song-name" autocomplete="off" autofocus id="song-name">
+              <button type="submit">Search</button>
+            </form>
+            <div>
+              <div id="search-results-number-wrapper"></div>
+              <ul id="songs-list-wrapper-search" class="songs-list"></ul>
             </div>
           </div>
         </section>
-      </section>
-      <section id="search" class="page">
-        <div class="container">
-          <h2 class="section-title">Search</h2>
-          <form>
-            <label for="song-name">Name</label>
-            <input type="text" name="song-name" autocomplete="off" autofocus id="song-name">
-            <button type="submit">Search</button>
-          </form>
-          <div>
-            <div id="search-results-number-wrapper"></div>
-            <ul id="songs-list-wrapper-search" class="songs-list"></ul>
+        <section id="discover" class="page">
+          <div class="container">
+            <h2 class="section-title">Discover</h2>
+            <h3 class="section-subtitle">Give it a try!</h3>
+            <ul id="songs-list-wrapper-discover" class="songs-list"></ul>
           </div>
-        </div>
-      </section>
-      <section id="discover" class="page">
-        <div class="container">
-          <h2 class="section-title">Discover</h2>
-          <h3 class="section-subtitle">Give it a try!</h3>
-          <ul id="songs-list-wrapper-discover" class="songs-list"></ul>
-        </div>
-      </section>
-    </main>
+        </section>
+      </main>
 
-    <footer>
-      <p>All rights reserved</p>
-    </footer>
+      <footer>
+        <p>All rights reserved</p>
+      </footer>
 
 
-    <script id="template-songs-list" type="text/x-handlebars-template">
-      <li>
-        <h4>
-          <span class="song-author">{{author}} - </span>
-          <span class="song-title">{{title}}</span>
-        </h4>
-        <div class="audio-player-{{id}}">
-          <audio>
-            <source src="songs/{{filename}}" type="audio/mpeg">
-          </audio>
-        </div>
-        <div class="song-info">
-          <p class="song-category">
-            Categories: {{#each categories}}
-              <span>{{this}}</span>
-              {{#unless @last}}
-                <span>, </span>
-              {{/unless}}
-            {{/each}}
-          </p>
-          <p class="song-rank">#{{ranking}} in the ranking</p>
-        </div>
-      </li>
-    </script>
+      <script id="template-songs-list" type="text/x-handlebars-template">
+        <li>
+          <h4>
+            <span class="song-author">{{author}} - </span>
+            <span class="song-title">{{title}}</span>
+          </h4>
+          <div class="audio-player-{{id}}">
+            <audio>
+              <source src="songs/{{filename}}" type="audio/mpeg">
+            </audio>
+          </div>
+          <div class="song-info">
+            <p class="song-category">
+              Categories: {{#each categories}}
+                <span>{{this}}</span>
+                {{#unless @last}}
+                  <span>, </span>
+                {{/unless}}
+              {{/each}}
+            </p>
+            <p class="song-rank">#{{ranking}} in the ranking</p>
+          </div>
+        </li>
+      </script>
 
-    <script id="template-search-results-number" type="text/x-handlebars-template">
-      <h3 class="search-results-number">
-        We have found {{searchResultsNumber}}
-        {{#if (isOnlyOneSongFound searchResultsNumber)}}
-          <span> song...</span>
-        {{else}}
-          <span> songs...</span>
-        {{/if}}
-      </h3>
-    </script>
+      <script id="template-search-results-number" type="text/x-handlebars-template">
+        <h3 class="search-results-number">
+          We have found {{searchResultsNumber}}
+          {{#if (isOnlyOneSongFound searchResultsNumber)}}
+            <span> song...</span>
+          {{else}}
+            <span> songs...</span>
+          {{/if}}
+        </h3>
+      </script>
 
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
-    <script src="vendor/js/green-audio-player.min.js"></script>
-    <script src="js/app.js" type="module"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
+      <script src="vendor/js/green-audio-player.min.js"></script>
+      <script src="js/app.js" type="module"></script>
+    </div>
+    <p id="not-supported-devices-info">
+      Sorry, but devices with screen width equal or lower then 374 pixels are not supported
+    </p>
   </body>
 </html>

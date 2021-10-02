@@ -1,0 +1,318 @@
+@media (max-width: 1199px) {
+  .hero {
+    .hero-inner {
+      h1 {
+        font-size: 180px;
+        letter-spacing: 100px;
+      }
+    }
+  }
+
+  .subscribe-wrapper h1,
+  .subscribe-wrapper h2 {
+    font-size: 80px;
+  }
+
+  .subscribe-wrapper-inner {
+    .join-now-link {
+      width: 234px;
+      height: 100px;
+      line-height: 100px;
+      font-size: 30px;
+      left: 10px;
+    }
+  }
+}
+
+
+@media (max-width: 991px) {
+  .hero {
+    .hero-inner {
+      h1 {
+        font-size: 140px;
+        letter-spacing: 80px;
+      }
+
+      h2 {
+        font-size: 30px;
+        padding-top: 20px;
+      }
+
+    }
+  }
+
+  .subscribe-wrapper h1,
+  .subscribe-wrapper h2 {
+    font-size: 70px;
+    letter-spacing: 10px;
+  }
+
+  .artist-card-wrapper {
+    height: 464px;
+    width: 376px;
+    top: 140px;
+  }
+
+  .subscribe-wrapper-inner {
+    .join-now-link {
+      top: 440px;
+    }
+  }
+
+  .artist-name {
+    top: 150px;
+
+    h2 {
+      &.artist-surname {
+        top: 70px;
+
+      }
+
+    }
+
+  }
+
+  #search form {
+    display: flex;
+    height: 160px;
+    flex-direction: column;
+
+    label {
+      display: none;
+    }
+
+    button, input {
+      height: 65px;
+    }
+
+    input {
+      margin: 0 auto auto;
+    }
+
+    button {
+      margin: auto auto 0;
+    }
+
+  }
+
+}
+
+
+@media (max-width: 767px) {
+  .hero {
+    .hero-inner {
+      h1 {
+        font-size: 110px;
+        letter-spacing: 50px;
+        text-indent: 0;
+      }
+
+      h2 {
+        font-size: 30px;
+        padding-top: 20px;
+      }
+
+    }
+  }
+
+  .subscribe-wrapper {
+    height: 820px;
+
+    h1, h2 {
+      font-size: 50px;
+    }
+  }
+
+  .artist-card-wrapper {
+    height: 377px;
+    width: 306px;
+  }
+
+  .subscribe-wrapper-inner {
+    .join-now-link {
+      width: 188px;
+      height: 80px;
+      line-height: 80px;
+      font-size: 26px;
+      letter-spacing: 6px;
+    }
+
+    .album-info {
+      bottom: 50px;
+
+      p {
+        font-size: 28px;
+        letter-spacing: 6px;
+      }
+
+    }
+
+  }
+
+  .songs-list {
+    li {
+      letter-spacing: normal;
+    }
+  }
+
+  .song-info {
+    p {
+      &.song-category {
+        padding-left: 5px;
+      }
+
+      &.song-rank {
+        padding-right: 5px;
+      }
+
+    }
+
+  }
+
+}
+
+
+@media (max-width: 575px) {
+  body {
+    font-size: 18px;
+  }
+
+  .section-title {
+    font-size: 50px;
+    letter-spacing: 10px;
+  }
+
+  .hero {
+    .hero-inner {
+      h1 {
+        font-size: 90px;
+        letter-spacing: 30px;
+      }
+
+      h2 {
+        font-size: 28px;
+      }
+
+    }
+  }
+
+  .search-results-number,
+  .section-subtitle,
+  .main-nav a,
+  .songs-list h4 {
+    font-size: 28px;
+    letter-spacing: 2px;
+  }
+
+  .subscribe-wrapper {
+    h1, h2 {
+      letter-spacing: 5px;
+    }
+
+  }
+
+  .artist-card-wrapper {
+    height: 320px;
+    width: 258px;
+  }
+
+  .subscribe-wrapper-inner {
+    .join-now-link {
+      top: 500px;
+    }
+
+    .album-info {
+      right: 10px;
+
+      p {
+        letter-spacing: 3px;
+      }
+
+    }
+  }
+
+  #search form {
+    input {
+      width: 320px;
+    }
+
+  }
+
+}
+
+
+@media (max-width: 482px) {
+  body {
+    font-size: 14px;
+  }
+
+  .hero {
+    .hero-inner {
+      h1 {
+        letter-spacing: 15px;
+      }
+
+      h2 {
+        font-size: 26px;
+      }
+
+    }
+  }
+
+  .search-results-number,
+  .section-subtitle,
+  .main-nav a,
+  .songs-list h4 {
+    font-size: 24px;
+    letter-spacing: 0;
+  }
+
+  .subscribe-wrapper {
+    h1, h2 {
+      font-size: 40px;
+      letter-spacing: 3px;
+    }
+
+  }
+
+  .artist-card-wrapper {
+    right: 10px;
+    height: 290px;
+    width: 235px;
+  }
+
+  .subscribe-wrapper-inner {
+    .album-info {
+      p {
+        font-size: 24px;
+        letter-spacing: 1px;
+      }
+
+    }
+
+  }
+
+  .artist-name {
+    top: 120px;
+
+    h2 {
+      &.artist-surname {
+        top: 50px;
+
+      }
+
+    }
+
+  }
+
+}
+
+@media (max-width: 374px) {
+  #not-supported-devices-info {
+    display: block;
+  }
+
+  #body-inner {
+    display: none;
+  }
+}

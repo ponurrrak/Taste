@@ -71,6 +71,7 @@
     top: 385px;
     width: 312px;
     height: 132px;
+    line-height: 132px;
     background-color: $color-main;
     border-radius: 5px;
     text-align: center;
@@ -86,7 +87,7 @@
 .artist-card-wrapper {
   position: absolute;
   height: 580px;
-  max-width: 470px;
+  width: 470px;
   top: 25px;
   right: 35px;
 
