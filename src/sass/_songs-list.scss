@@ -3,11 +3,12 @@
 
   li {
     max-width: 560px;
-    margin: 0 auto 65px;
+    margin: 0 auto 60px;
   }
 
   h4 {
-    padding-bottom: 60px;
+    padding-bottom: 56px;
+    line-height: 1.4;
 
     .song-author {
       text-transform: uppercase;
@@ -30,7 +31,7 @@
   .song-info {
     display: flex;
     justify-content: space-between;
-    margin-top: 25px;
+    margin-top: 24px;
 
     p {
       margin: 0;

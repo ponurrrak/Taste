@@ -97,17 +97,14 @@
             <span class="song-title">{{title}}</span>
           </h4>
           <div class="audio-player-{{id}}">
-            <audio>
+            <audio preload="auto">
               <source src="songs/{{filename}}" type="audio/mpeg">
             </audio>
           </div>
           <div class="song-info">
             <p class="song-category">
               Categories: {{#each categories}}
-                <span>{{this}}</span>
-                {{#unless @last}}
-                  <span>, </span>
-                {{/unless}}
+                <span>{{this}}</span>{{#unless @last}}<span>, </span>{{/unless}}
               {{/each}}
             </p>
             <p class="song-rank">#{{ranking}} in the ranking</p>

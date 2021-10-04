@@ -3,34 +3,138 @@
         {
             "id": 1,
             "title": "At The Top",
-            "author": 1,
+            "author": "Amba",
             "filename": "At_The_Top_David_Renda.mp3",
             "categories": ["Powerful", "Mystery"],
-            "ranking": 1
+            "ranking": 5
         },
         {
             "id": 2,
             "title": "Silly Feet",
-            "author": 1,
+            "author": "Zonk",
             "filename": "Silly_Feet_David_Renda.mp3",
             "categories": ["Relax", "Fun"],
-            "ranking": 2
+            "ranking": 8
         },
         {
             "id": 3,
             "title": "Western adventures",
-            "author": 2,
+            "author": "No Idea",
             "filename": "Western_Adventures_-_David_Fesliyan.mp3",
             "categories": ["Fun", "Western"],
-            "ranking": 4
+            "ranking": 11
         },
         {
             "id": 4,
             "title": "Bass trap",
-            "author": 3,
+            "author": "Bulba",
             "filename": "BASS_TRAP_Steve_Oxen.mp3",
             "categories": ["Powerful", "Insomnia"],
+            "ranking": 12
+        },
+        {
+            "id": 5,
+            "title": "War is coming",
+            "author": "Mazzi",
+            "filename": "War is coming.mp3",
+            "categories": ["Country", "Techno"],
+            "ranking": 1
+        },
+        {
+            "id": 6,
+            "title": "Needles and pain",
+            "author": "Koshmar",
+            "filename": "Needles and pain.mp3",
+            "categories": ["Indie", "Trash"],
+            "ranking": 7
+        },
+        {
+            "id": 7,
+            "title": "Rama Dee",
+            "author": "Amba",
+            "filename": "Rama Dee.mp3",
+            "categories": ["Pop", "Cacophony"],
+            "ranking": 6
+        },
+        {
+            "id": 8,
+            "title": "Rapid Raptor",
+            "author": "Mazzi&Friends",
+            "filename": "Rapid Raptor.mp3",
+            "categories": ["Powerful", "Insomnia"],
+            "ranking": 10
+        },
+        {
+            "id": 9,
+            "title": "realising bomb",
+            "author": "Zonk",
+            "filename": "realising bomb.mp3",
+            "categories": ["Salsa", "Funeral"],
+            "ranking": 9
+        },
+        {
+            "id": 10,
+            "title": "Sick and Chick",
+            "author": "Mazzi",
+            "filename": "Sick and Chick.mp3",
+            "categories": ["Blues", "Hip-hop"],
+            "ranking": 2
+        },
+        {
+            "id": 11,
+            "title": "Sky Ladder",
+            "author": "Orwell",
+            "filename": "Sky Ladder.mp3",
+            "categories": ["Hip-hop", "Jazz-hop"],
+            "ranking": 4
+        },
+        {
+            "id": 12,
+            "title": "Angry Grey Guy",
+            "author": "Koshmar",
+            "filename": "Angry Grey Guy.mp3",
+            "categories": ["Funk", "Punk"],
+            "ranking": 8
+        },
+        {
+            "id": 13,
+            "title": "Charon song",
+            "author": "Yayco",
+            "filename": "Charon song.mp3",
+            "categories": ["Psychodelic", "Neurohop"],
+            "ranking": 12
+        },
+        {
+            "id": 14,
+            "title": "Goro",
+            "author": "Deaf Band",
+            "filename": "Goro.mp3",
+            "categories": ["Chillout", "Gothic"],
+            "ranking": 14
+        },
+        {
+            "id": 15,
+            "title": "halloweed",
+            "author": "Untallented people",
+            "filename": "halloweed.mp3",
+            "categories": ["Emo", "Sumo"],
+            "ranking": 15
+        },
+        {
+            "id": 16,
+            "title": "How Far How Long",
+            "author": "Deaf Band",
+            "filename": "How Far How Long.mp3",
+            "categories": ["Oi", "Ska"],
             "ranking": 3
+        },
+        {
+            "id": 17,
+            "title": "Who",
+            "author": "Tag if You Know",
+            "filename": "Who.mp3",
+            "categories": ["Angelic choirs", "Absurd"],
+            "ranking": 13
         }
     ]
 }

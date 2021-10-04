@@ -33,9 +33,9 @@ export const settings = {
   db: {
     url: '//' + window.location.hostname + (window.location.hostname=='localhost' ? ':3131' : ''),
     endpoint: 'songs',
-    amountOfSongsToGet: 9,
+    amountOfSongsToGet: 10,
     queries: {
-      bestSongs: '_sort=ranking,id&_order=desc&_start=0&_limit=',
+      bestSongs: '_sort=ranking,id&_order=asc,desc&_start=0&_limit=',
       searchPhraseInTitles: 'title_like=',
       searchPhraseInAuthors: 'author_like=',
       lastSong: '_sort=id&_order=desc&_start=0&_limit=1',

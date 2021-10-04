@@ -63,7 +63,7 @@ class Search extends Page{
       } else if(isNaN(secondElem.ranking)){
         return -1;
       } else {
-        return secondElem.ranking - firstElem.ranking;
+        return firstElem.ranking - secondElem.ranking;
       }
     });
     return uniqueSongs;
