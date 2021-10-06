@@ -14,6 +14,9 @@ class Page {
       songsListWrapper: document.querySelector(thisPage.songsListWrapperSelector),
     };
   }
+  getCategories(){
+
+  }
   async getData(query){
     const url = settings.db.url + '/' + settings.db.endpoint + '?' + query;
     const rawResponse = await fetch(url);
