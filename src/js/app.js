@@ -25,13 +25,13 @@ const app = {
           const currentActiveHashedID = currentActiveNavLink.getAttribute('href');
           if(currentActiveHashedID === select.containerOf.discoverPage){
             const dataPromise = thisApp.pages.discover.getRandomSong();
-            thisApp.pages.discover.renderData(dataPromise);
+            thisApp.pages.discover.renderSongsList(dataPromise);
           }
         }
         const pageToActivateID = clickedNavLink.getAttribute('href').replace('#', '');
         thisApp.activatePage(pageToActivateID);
         if(pageToActivateID === select.containerOf.searchPage.replace('#', '')) {
-          thisApp.pages.search.removeRenderedData();
+          thisApp.pages.search.cleanOnPageVisit();
         }
       });
     }

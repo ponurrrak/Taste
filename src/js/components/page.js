@@ -14,19 +14,20 @@ class Page {
       songsListWrapper: document.querySelector(thisPage.songsListWrapperSelector),
     };
   }
-  getCategories(){
-
-  }
-  async getData(query){
-    const url = settings.db.url + '/' + settings.db.endpoint + '?' + query;
+  async getData(query, endpoint = settings.db.endpoint.songs){
+    const url = settings.db.url + '/' + endpoint + '?' + query;
     const rawResponse = await fetch(url);
     return rawResponse.json();
   }
-  async renderData(dataPromise){
+  getCategories(){
+    const thisPage = this;
+    Page.prototype.categories = thisPage.getData('', settings.db.endpoint.categories);
+  }
+  async renderSongsList(dataPromise){
     const thisPage = this;
     try {
       const parsedResponse = await dataPromise;
-      thisPage.removeRenderedData();
+      thisPage.removeRenderedSongs();
       for(const songData of parsedResponse){
         const generatedDOMElement = utils.createDOMBasedOnTemplate(songData, templates.songsList);
         thisPage.dom.songsListWrapper.appendChild(generatedDOMElement);
@@ -38,10 +39,30 @@ class Page {
       alert(settings.errorMessage + err.toString());
     }
   }
-  removeRenderedData(){
+  async renderCategories(templateFunction, wrapper){
+    const thisPage = this;
+    try {
+      const categories = await thisPage.categories;
+      const generatedDOMElement = utils.createDOMBasedOnTemplate({categories}, templateFunction);
+      wrapper.appendChild(generatedDOMElement);
+      thisPage.initActions && thisPage.initActions();
+    } catch(err) {
+      alert(settings.errorMessage + err.toString());
+    }
+  }
+  removeRenderedSongs(){
     const thisPage = this;
     thisPage.dom.songsListWrapper.innerHTML = '';
     thisPage.audioPlayers = [];
+  }
+  generateQueryBasedOnCategory(category, haveResultsToBeSorted, howManyResults){
+    let query = settings.db.queries.searchInSongCategories + '(,|^)' + category + '(,|$)';
+    query = haveResultsToBeSorted ?
+      isNaN(howManyResults) ?
+        query + '&' + settings.db.queries.bestSongs :
+        query + '&' + settings.db.queries.bestSongs + settings.db.amountOfSongsToGet
+      : query;
+    return query;
   }
 }
 

@@ -53,7 +53,7 @@
             "title": "Rama Dee",
             "author": "Amba",
             "filename": "Rama Dee.mp3",
-            "categories": ["Pop", "Cacophony"],
+            "categories": ["Indie", "Punk"],
             "ranking": 6
         },
         {
@@ -85,7 +85,7 @@
             "title": "Sky Ladder",
             "author": "Orwell",
             "filename": "Sky Ladder.mp3",
-            "categories": ["Hip-hop", "Jazz-hop"],
+            "categories": ["Hip-hop", "Funk"],
             "ranking": 4
         },
         {
@@ -117,7 +117,7 @@
             "title": "halloweed",
             "author": "Untallented people",
             "filename": "halloweed.mp3",
-            "categories": ["Emo", "Sumo"],
+            "categories": ["Techno", "Chillout"],
             "ranking": 15
         },
         {
@@ -125,7 +125,7 @@
             "title": "How Far How Long",
             "author": "Deaf Band",
             "filename": "How Far How Long.mp3",
-            "categories": ["Oi", "Ska"],
+            "categories": ["Gothic", "Country"],
             "ranking": 3
         },
         {
@@ -133,8 +133,32 @@
             "title": "Who",
             "author": "Tag if You Know",
             "filename": "Who.mp3",
-            "categories": ["Angelic choirs", "Absurd"],
+            "categories": ["Techno", "Blues"],
             "ranking": 13
         }
+    ],
+  "categories":
+    [
+      "Powerful",
+      "Mystery",
+      "Relax",
+      "Fun",
+      "Western",
+      "Insomnia",
+      "Country",
+      "Techno",
+      "Indie",
+      "Trash",
+      "Punk",
+      "Salsa",
+      "Funeral",
+      "Blues",
+      "Hip-hop",
+      "Funk",
+      "Psychodelic",
+      "Neurohop",
+      "Gothic",
+      "Chillout",
+      "Neurohop"
     ]
 }

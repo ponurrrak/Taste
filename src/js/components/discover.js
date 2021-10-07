@@ -7,7 +7,7 @@ class Discover extends Page{
     const thisDiscover = this;
     thisDiscover.getAllSongsNumber();
     const dataPromise = thisDiscover.getRandomSong();
-    thisDiscover.renderData(dataPromise);
+    thisDiscover.renderSongsList(dataPromise);
   }
   getAllSongsNumber(){
     const thisDiscover = this;

@@ -6,33 +6,47 @@ class Search extends Page{
   constructor(songsListWrapperSelector){
     super(songsListWrapperSelector);
     const thisSearch = this;
-    thisSearch.initActions();
+    thisSearch.renderCategories(templates.categoriesSearch, thisSearch.dom.select);
   }
   getElements(){
     const thisSearch = this;
     super.getElements();
     thisSearch.dom.input = document.querySelector(select.search.input);
+    thisSearch.dom.select = document.querySelector(select.search.select);
     thisSearch.dom.form = document.querySelector(select.search.form);
     thisSearch.dom.searchResultsNumber = document.querySelector(select.containerOf.searchResultsNumber);
   }
   initActions(){
     const thisSearch = this;
+    const superGetDataFunc = super.getData;
     thisSearch.dom.form.addEventListener('submit', function(evt){
       evt.preventDefault();
-      if(!thisSearch.dom.input.value.replace(' ', '')){
+      const inputValue = thisSearch.dom.input.value.replace(' ', '');
+      const selectValue = thisSearch.dom.select.value;
+      if(!inputValue && !selectValue){
         return;
       }
-      const dataPromisesAll = thisSearch.getData();
-      const dataPromiseMerged = thisSearch.removeDuplicates(dataPromisesAll);
-      const dataPromiseSorted = thisSearch.sortData(dataPromiseMerged);
-      thisSearch.renderData(dataPromiseSorted);
+      let dataPromiseSorted;
+      if(!inputValue){
+        const query = thisSearch.generateQueryBasedOnCategory(selectValue, true);
+        dataPromiseSorted = superGetDataFunc(query);
+      } else {
+        const dataPromisesAll = thisSearch.getData();
+        const dataPromiseMerged = thisSearch.removeDuplicates(dataPromisesAll);
+        dataPromiseSorted = thisSearch.sortData(dataPromiseMerged);
+      }
+      thisSearch.renderSongsList(dataPromiseSorted);
       thisSearch.renderResultsNumber(dataPromiseSorted);
     });
   }
   getData(){
     const thisSearch = this;
-    const queryBasedOnTitles = settings.db.queries.searchPhraseInTitles + thisSearch.dom.input.value;
-    const queryBasedOnAuthors = settings.db.queries.searchPhraseInAuthors + thisSearch.dom.input.value;
+    const inputValue = thisSearch.dom.input.value;
+    let queryBasedOnTitles = settings.db.queries.searchPhraseInTitles + inputValue;
+    let queryBasedOnAuthors = settings.db.queries.searchPhraseInAuthors + inputValue;
+    const queryBasedOnCategory = thisSearch.generateQueryBasedOnCategory(thisSearch.dom.select.value);
+    queryBasedOnTitles += '&' + queryBasedOnCategory;
+    queryBasedOnAuthors += '&' + queryBasedOnCategory;
     const promiseTitles = super.getData(queryBasedOnTitles);
     const promiseAuthors = super.getData(queryBasedOnAuthors);
     const promises = Promise.all([promiseTitles, promiseAuthors]);
@@ -81,10 +95,15 @@ class Search extends Page{
       alert(settings.errorMessage + err.toString());
     }
   }
-  removeRenderedData(){
+  removeRenderedSongs(){
     const thisSearch = this;
-    super.removeRenderedData();
+    super.removeRenderedSongs();
     thisSearch.dom.searchResultsNumber.innerHTML = '';
+  }
+  cleanOnPageVisit(){
+    const thisSearch = this;
+    thisSearch.removeRenderedSongs();
+    thisSearch.dom.select.value = '';
     thisSearch.dom.input.value = '';
     thisSearch.dom.input.focus();
   }
