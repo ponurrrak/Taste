@@ -6,29 +6,30 @@ class Search extends Page{
   constructor(songsListWrapperSelector){
     super(songsListWrapperSelector);
     const thisSearch = this;
-    thisSearch.renderCategories(templates.categoriesSearch, thisSearch.dom.select);
+    thisSearch.renderCategories(templates.categoriesSearch, thisSearch.dom.selectWrapper);
   }
   getElements(){
     const thisSearch = this;
     super.getElements();
     thisSearch.dom.input = document.querySelector(select.search.input);
-    thisSearch.dom.select = document.querySelector(select.search.select);
+    thisSearch.dom.selectWrapper = document.querySelector(select.containerOf.categoriesSearch);
     thisSearch.dom.form = document.querySelector(select.search.form);
     thisSearch.dom.searchResultsNumber = document.querySelector(select.containerOf.searchResultsNumber);
   }
   initActions(){
     const thisSearch = this;
     const superGetDataFunc = super.getData;
+    const selectElement = thisSearch.dom.categoriesElement;
     thisSearch.dom.form.addEventListener('submit', function(evt){
       evt.preventDefault();
       const inputValue = thisSearch.dom.input.value.replace(' ', '');
-      const selectValue = thisSearch.dom.select.value;
-      if(!inputValue && !selectValue){
+      if(!inputValue && !selectElement.value){
+        alert(settings.message.searchFieldsRequired);
         return;
       }
       let dataPromiseSorted;
       if(!inputValue){
-        const query = thisSearch.generateQueryBasedOnCategory(selectValue, true);
+        const query = thisSearch.generateQueryBasedOnCategory(selectElement.value, true);
         dataPromiseSorted = superGetDataFunc(query);
       } else {
         const dataPromisesAll = thisSearch.getData();
@@ -39,14 +40,21 @@ class Search extends Page{
       thisSearch.renderResultsNumber(dataPromiseSorted);
     });
   }
+  generateQueries(){
+    const thisSearch = this;
+    const selectElement = thisSearch.dom.categoriesElement;
+    let queryBasedOnTitles = settings.db.queries.searchPhraseInTitles + thisSearch.dom.input.value;
+    let queryBasedOnAuthors = settings.db.queries.searchPhraseInAuthors + thisSearch.dom.input.value;
+    if(selectElement.value){
+      const queryBasedOnCategory = thisSearch.generateQueryBasedOnCategory(selectElement.value);
+      queryBasedOnTitles += '&' + queryBasedOnCategory;
+      queryBasedOnAuthors += '&' + queryBasedOnCategory;
+    }
+    return [queryBasedOnTitles, queryBasedOnAuthors];
+  }
   getData(){
     const thisSearch = this;
-    const inputValue = thisSearch.dom.input.value;
-    let queryBasedOnTitles = settings.db.queries.searchPhraseInTitles + inputValue;
-    let queryBasedOnAuthors = settings.db.queries.searchPhraseInAuthors + inputValue;
-    const queryBasedOnCategory = thisSearch.generateQueryBasedOnCategory(thisSearch.dom.select.value);
-    queryBasedOnTitles += '&' + queryBasedOnCategory;
-    queryBasedOnAuthors += '&' + queryBasedOnCategory;
+    const [queryBasedOnTitles, queryBasedOnAuthors] = thisSearch.generateQueries();
     const promiseTitles = super.getData(queryBasedOnTitles);
     const promiseAuthors = super.getData(queryBasedOnAuthors);
     const promises = Promise.all([promiseTitles, promiseAuthors]);
@@ -92,7 +100,7 @@ class Search extends Page{
       const generatedDOMElement = utils.createDOMBasedOnTemplate(searchResultsNumber, templates.searchResultsNumber);
       thisSearch.dom.searchResultsNumber.appendChild(generatedDOMElement);
     } catch(err) {
-      alert(settings.errorMessage + err.toString());
+      alert(settings.message.error + err.toString());
     }
   }
   removeRenderedSongs(){
@@ -102,8 +110,9 @@ class Search extends Page{
   }
   cleanOnPageVisit(){
     const thisSearch = this;
+    const selectElement = thisSearch.dom.categoriesElement;
     thisSearch.removeRenderedSongs();
-    thisSearch.dom.select.value = '';
+    selectElement.value = '';
     thisSearch.dom.input.value = '';
     thisSearch.dom.input.focus();
   }

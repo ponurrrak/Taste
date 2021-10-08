@@ -36,18 +36,19 @@ class Page {
         thisPage.audioPlayers.push(currentAudioPlayer);
       }
     } catch(err) {
-      alert(settings.errorMessage + err.toString());
+      alert(settings.message.error + err.toString());
     }
   }
   async renderCategories(templateFunction, wrapper){
     const thisPage = this;
     try {
       const categories = await thisPage.categories;
-      const generatedDOMElement = utils.createDOMBasedOnTemplate({categories}, templateFunction);
-      wrapper.appendChild(generatedDOMElement);
+      categories.sort();
+      thisPage.dom.categoriesElement = utils.createDOMBasedOnTemplate({categories}, templateFunction);
+      wrapper.appendChild(thisPage.dom.categoriesElement);
       thisPage.initActions && thisPage.initActions();
     } catch(err) {
-      alert(settings.errorMessage + err.toString());
+      alert(settings.message.error + err.toString());
     }
   }
   removeRenderedSongs(){

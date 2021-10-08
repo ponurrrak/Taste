@@ -13,7 +13,8 @@ export const select = {
     categoriesHome: '#categories-wrapper-home',
     searchResultsNumber: '#search-results-number-wrapper',
     discoverPage: '#discover',
-    searchPage: '#search'
+    searchPage: '#search',
+    categoriesSearch: '#categories-select-wrapper'
   },
   all: {
     navPanel: '.main-nav',
@@ -54,7 +55,10 @@ export const settings = {
     }
 
   },
-  errorMessage: 'Sorry, but an unexpected error occured. Try again later. Error info: '
+  message: {
+    searchFieldsRequired: 'Please, choose a category and/or type an artist or song name',
+    error: 'Sorry, but an unexpected error occured. Try again later. Error info: '
+  }
 };
 
 export const templates = {
