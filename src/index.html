@@ -64,19 +64,26 @@
           </section>
         </section>
         <section id="search" class="page">
-          <div class="container">
+          <div class="container search-form-container">
             <h2 class="section-title">Search</h2>
             <form>
-              <label for="song-name">Name</label>
-              <input type="text" name="song-name" autocomplete="off" autofocus id="song-name">
-              <label for="categories-select">Category</label>
-              <div id="categories-select-wrapper"></div>
-              <button type="submit">Search</button>
+              <div class="form-row">
+                <div id="categories-input-wrapper">
+                  <label for="song-name">Name</label>
+                  <input type="text" name="song-name" autocomplete="off" autofocus id="song-name">
+                </div>
+                <div id="categories-select-wrapper">
+                  <label for="categories-select">Category</label>
+                </div>
+              </div>
+              <div class="form-row">
+                <button type="submit">Search</button>
+              </div>
             </form>
-            <div>
-              <div id="search-results-number-wrapper"></div>
-              <ul id="songs-list-wrapper-search" class="songs-list"></ul>
-            </div>
+          </div>
+          <div class="container">
+            <div id="search-results-number-wrapper"></div>
+            <ul id="songs-list-wrapper-search" class="songs-list"></ul>
           </div>
         </section>
         <section id="discover" class="page">
@@ -128,7 +135,8 @@
 
       <script id="template-categories-home" type="text/x-handlebars-template">
         <p class="categories-home">
-          Categories: {{#each categories}}
+          <span>Categories: </span>
+          {{#each categories}}
             <a href="#{{this}}">{{this}}</a>{{#unless @last}}<span>, </span>{{/unless}}
           {{/each}}
         </p>
@@ -136,7 +144,7 @@
 
       <script id="template-categories-search" type="text/x-handlebars-template">
         <select name="category" id="categories-select">
-          <option selected value="">Please choose a category</option>
+          <option selected value=""></option>
           {{#each categories}}
             <option value="{{this}}">{{this}}</option>
           {{/each}}

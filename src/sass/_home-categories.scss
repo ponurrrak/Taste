@@ -1,0 +1,19 @@
+#categories-wrapper-home {
+  padding: 0 10px 60px;
+  text-align: justify;
+  line-height: 1.7;
+  font-size: 24px;
+  letter-spacing: 4px;
+
+  span:first-of-type {
+    font-weight: $font-bold;
+  }
+
+  a {
+    color: $color-light;
+
+    &.active {
+      color: $color-main;
+    }
+  }
+}

@@ -11,10 +11,9 @@ export const select = {
     songsListSearch: '#songs-list-wrapper-search',
     songsListDiscover: '#songs-list-wrapper-discover',
     categoriesHome: '#categories-wrapper-home',
+    categoriesSearch: '#categories-select-wrapper',
     searchResultsNumber: '#search-results-number-wrapper',
-    discoverPage: '#discover',
-    searchPage: '#search',
-    categoriesSearch: '#categories-select-wrapper'
+    discoverPage: '#discover'
   },
   all: {
     navPanel: '.main-nav',
@@ -24,8 +23,7 @@ export const select = {
   },
   search: {
     form: '#search form',
-    input: '#search input',
-    select: '#categories-select'
+    input: '#search input'
   },
   home: {
     categoryLink: '#categories-wrapper-home a',
@@ -38,6 +36,10 @@ export const classNames = {
 };
 
 export const settings = {
+  pageID: {
+    home: 'home',
+    search: 'search'
+  },
   db: {
     url: '//' + window.location.hostname + (window.location.hostname=='localhost' ? ':3131' : ''),
     endpoint: {

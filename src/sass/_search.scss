@@ -3,21 +3,41 @@
   margin-bottom: 88px;
 }
 
-#search form {
-  height: 65px;
-  margin-top: 48px;
-  text-align: center;
+.search-form-container {
+  max-width: 1240px;
+}
 
-  input {
+#search form {
+  margin-top: 48px;
+
+  .form-row {
+    &:first-of-type {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    &:last-of-type {
+      margin-top: 20px;
+      text-align: center;
+    }
+  }
+
+  #categories-input-wrapper, #categories-select-wrapper {
     display: inline-block;
-    height: 100%;
+  }
+
+  input, select {
     width: 355px;
+    height: 65px;
+    margin-left: 22px;
+    padding: 0 15px;
     border: none;
     border-radius: 10px;
-    padding: 0 10px;
-    margin-left: 22px;
-    margin-right: 22px;
     font-size: 40px;
+  }
+
+  input {
+    margin-right: 44px;
   }
 
   label {
@@ -29,7 +49,7 @@
 
   button {
     display: inline-block;
-    height: 100%;
+    height: 65px;
     width: 140px;
     vertical-align: super;
     background-color: $color-main;

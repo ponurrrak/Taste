@@ -1,4 +1,4 @@
-import {select, classNames} from './settings.js';
+import {select, classNames, settings} from './settings.js';
 import Home from './components/home.js';
 import Search from './components/search.js';
 import Discover from './components/discover.js';
@@ -30,8 +30,10 @@ const app = {
         }
         const pageToActivateID = clickedNavLink.getAttribute('href').replace('#', '');
         thisApp.activatePage(pageToActivateID);
-        if(pageToActivateID === select.containerOf.searchPage.replace('#', '')) {
+        if(pageToActivateID === settings.pageID.search) {
           thisApp.pages.search.cleanOnPageVisit();
+        } else if(pageToActivateID === settings.pageID.home){
+          thisApp.pages.home.resetActiveCategory();
         }
       });
     }

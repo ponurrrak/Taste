@@ -25,27 +25,41 @@ class Home extends Page{
       const clickedLink = utils.lookForEventTarget(evt, select.home.categoryLink);
       if(clickedLink){
         window.location.hash = '#/home';
-        const currentActiveCategoryLink = thisHome.dom.categoriesWrapper.querySelector(select.home.activeLink);
-        if(currentActiveCategoryLink){
-          currentActiveCategoryLink.classList.remove(classNames.active);
-          if(clickedLink === currentActiveCategoryLink){
-            thisHome.renderSongsList(thisHome.songsByCategoriesBuffer.mainHome);
-            return;
-          }
+        const isClickedLinkEqualToCurrentActive = thisHome.resetActiveCategory(clickedLink);
+        if(isClickedLinkEqualToCurrentActive){
+          return;
         }
-        clickedLink.classList.add(classNames.active);
-        const categoryName = clickedLink.getAttribute('href').replace('#', '');
-        const bufferedCategorySongs = thisHome.songsByCategoriesBuffer[categoryName];
-        if(bufferedCategorySongs){
-          thisHome.renderSongsList(bufferedCategorySongs);
-        } else {
-          const query = thisHome.generateQueryBasedOnCategory(categoryName, true, settings.db.amountOfSongsToGet);
-          const dataPromise = thisHome.getData(query);
-          thisHome.songsByCategoriesBuffer[categoryName] = dataPromise;
-          thisHome.renderSongsList(dataPromise);
-        }
+        thisHome.activateCategory(clickedLink);
       }
     });
+  }
+  resetActiveCategory(clickedLink){
+    const thisHome = this;
+    let isClickedLinkEqualToCurrentActive;
+    if(thisHome.currentActiveCategoryLink){
+      thisHome.currentActiveCategoryLink.classList.remove(classNames.active);
+      isClickedLinkEqualToCurrentActive = clickedLink === thisHome.currentActiveCategoryLink;
+      if(!clickedLink || isClickedLinkEqualToCurrentActive){
+        thisHome.currentActiveCategoryLink = null;
+        thisHome.renderSongsList(thisHome.songsByCategoriesBuffer.mainHome);
+      }
+    }
+    return isClickedLinkEqualToCurrentActive;
+  }
+  activateCategory(clickedLink){
+    const thisHome = this;
+    clickedLink.classList.add(classNames.active);
+    thisHome.currentActiveCategoryLink = clickedLink;
+    const categoryName = clickedLink.getAttribute('href').replace('#', '');
+    const bufferedCategorySongs = thisHome.songsByCategoriesBuffer[categoryName];
+    if(bufferedCategorySongs){
+      thisHome.renderSongsList(bufferedCategorySongs);
+    } else {
+      const query = thisHome.generateQueryBasedOnCategory(categoryName, true, settings.db.amountOfSongsToGet);
+      const dataPromise = thisHome.getData(query);
+      thisHome.songsByCategoriesBuffer[categoryName] = dataPromise;
+      thisHome.renderSongsList(dataPromise);
+    }
   }
 }
 

@@ -22,6 +22,30 @@
       left: 10px;
     }
   }
+
+  #search form {
+    .form-row:last-of-type {
+      margin-top: 30px;
+    }
+
+    #categories-input-wrapper {
+      margin: 0 calc(50% - 177.5px) auto auto;
+    }
+
+    #categories-select-wrapper {
+      margin: 30px calc(50% - 177.5px) 0 auto;
+    }
+
+    input, select {
+      margin-left: 0;
+    }
+
+    input {
+      margin-right: 0;
+    }
+
+  }
+
 }
 
 
@@ -68,29 +92,6 @@
 
       }
 
-    }
-
-  }
-
-  #search form {
-    display: flex;
-    height: 160px;
-    flex-direction: column;
-
-    label {
-      display: none;
-    }
-
-    button, input {
-      height: 65px;
-    }
-
-    input {
-      margin: 0 auto auto;
-    }
-
-    button {
-      margin: auto auto 0;
     }
 
   }
@@ -169,6 +170,22 @@
 
   }
 
+  #search form {
+    #categories-input-wrapper, #categories-select-wrapper {
+      margin-right: calc(50% - 150px);
+    }
+
+    input, select {
+      width: 300px;
+    }
+
+    label {
+      font-size: 24px;
+      letter-spacing: 1px;
+    }
+
+  }
+
 }
 
 
@@ -229,11 +246,18 @@
       }
 
     }
+
   }
 
   #search form {
-    input {
-      width: 320px;
+    #categories-input-wrapper, #categories-select-wrapper {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    input, select {
+      margin-top: 15px;
     }
 
   }
