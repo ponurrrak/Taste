@@ -108,13 +108,12 @@ class Search extends Page{
     super.removeRenderedSongs();
     thisSearch.dom.searchResultsNumber.innerHTML = '';
   }
-  cleanOnPageVisit(){
+  cleanOnPageExit(){
     const thisSearch = this;
     const selectElement = thisSearch.dom.categoriesElement;
     thisSearch.removeRenderedSongs();
     selectElement.value = '';
     thisSearch.dom.input.value = '';
-    thisSearch.dom.input.focus();
   }
 }
 

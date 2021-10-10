@@ -23,17 +23,12 @@ const app = {
         const currentActiveNavLink = document.querySelector(select.all.activeNavLink);
         if(currentActiveNavLink){
           const currentActiveHashedID = currentActiveNavLink.getAttribute('href');
-          if(currentActiveHashedID === select.containerOf.discoverPage){
-            const dataPromise = thisApp.pages.discover.getRandomSong();
-            thisApp.pages.discover.renderSongsList(dataPromise);
-          }
+          thisApp.cleanCurrentActivePage(currentActiveHashedID);
         }
         const pageToActivateID = clickedNavLink.getAttribute('href').replace('#', '');
         thisApp.activatePage(pageToActivateID);
         if(pageToActivateID === settings.pageID.search) {
-          thisApp.pages.search.cleanOnPageVisit();
-        } else if(pageToActivateID === settings.pageID.home){
-          thisApp.pages.home.resetActiveCategory();
+          thisApp.pages.search.dom.input.focus();
         }
       });
     }
@@ -65,6 +60,22 @@ const app = {
       }
     }
     thisApp.activatePage(pageMatchingHash);
+  },
+  cleanCurrentActivePage: function(activePageHashedID){
+    const thisApp = this;
+    let dataPromise;
+    switch (activePageHashedID) {
+    case select.containerOf.discoverPage:
+      dataPromise = thisApp.pages.discover.getRandomSong();
+      thisApp.pages.discover.renderSongsList(dataPromise);
+      break;
+    case select.containerOf.searchPage:
+      thisApp.pages.search.cleanOnPageExit();
+      break;
+    case select.containerOf.homePage:
+      thisApp.pages.home.resetActiveCategory();
+      break;
+    }
   },
   initPages: function(){
     const thisApp = this;

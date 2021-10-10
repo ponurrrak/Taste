@@ -33,16 +33,16 @@ class Home extends Page{
       }
     });
   }
-  resetActiveCategory(clickedLink){
+  resetActiveCategory(clickedCategoryLink){
     const thisHome = this;
     let isClickedLinkEqualToCurrentActive;
     if(thisHome.currentActiveCategoryLink){
       thisHome.currentActiveCategoryLink.classList.remove(classNames.active);
-      isClickedLinkEqualToCurrentActive = clickedLink === thisHome.currentActiveCategoryLink;
-      if(!clickedLink || isClickedLinkEqualToCurrentActive){
-        thisHome.currentActiveCategoryLink = null;
-        thisHome.renderSongsList(thisHome.songsByCategoriesBuffer.mainHome);
-      }
+      isClickedLinkEqualToCurrentActive = clickedCategoryLink === thisHome.currentActiveCategoryLink;
+    }
+    if(!clickedCategoryLink || isClickedLinkEqualToCurrentActive){
+      thisHome.currentActiveCategoryLink = null;
+      thisHome.renderSongsList(thisHome.songsByCategoriesBuffer.mainHome);
     }
     return isClickedLinkEqualToCurrentActive;
   }

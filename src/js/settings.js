@@ -13,6 +13,8 @@ export const select = {
     categoriesHome: '#categories-wrapper-home',
     categoriesSearch: '#categories-select-wrapper',
     searchResultsNumber: '#search-results-number-wrapper',
+    homePage: '#home',
+    searchPage: '#search',
     discoverPage: '#discover'
   },
   all: {
