@@ -20,10 +20,20 @@
     height: 70px;
     width: 100%;
 
-    .pin.progress__pin {
+    .pin.progress__pin,
+    .slider .gap-progress,
+    .slider .gap-progress .pin,
+    .controls .controls__slider .controls__progress {
       background-color: $color-main;
+    }
+
+    .pin.progress__pin {
       width: 18px;
       height: 18px;
+    }
+
+    .volume .volume__button.open path {
+      fill: $color-main;
     }
 
   }
