@@ -9,7 +9,6 @@
         "init:files": "touch README.md src/index.html src/sass/style.scss src/sass/_variables.scss src/sass/_normalize.scss src/sass/_layout.scss src/sass/_typography src/sass/_global.scss src/js/script.js src/db/app.json",
         "init:gitignore": "curl https://raw.githubusercontent.com/github/gitignore/master/Node.gitignore -o .gitignore",
         "init:gitignore:custom": "echo \"dist\" >> .gitignore",
-        "init:db": "echo {} >> src/db/app.json",
         "test": "npm-run-all test:*",
         "test:html": "html-validate src/*.html",
         "test:js": "eslint --fix src/js/",
